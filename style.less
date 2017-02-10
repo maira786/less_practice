@@ -1,7 +1,41 @@
+@lightBlue: #ddf;
+@lightGreen: #dfd;
+@lightRed: #fdd;
+
+@defaultThemeColor:@lightRed;
+@defaultRadius:30px;
+
+.Round{
+  .RoundedShape(9999px);
+}
+.RoundedShape(@radius:@defaultRadius){
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+.RoundedSquare(@radius:@defaultRadius){
+  .RoundedShape(@radius);
+}
+
 .shape{
   display: inline-block;
   width: 200px;
   height: 200px;
-  background: #ddf;
+  background: @defaultThemeColor;
   margin:20px;
+}
+.shape{
+  &:hover{
+    background: lighten(@lightBlue, 2%);
+  }
+}
+
+#shape1{
+  .Round;
+}
+#shape2{
+  .RoundedSquare;
+}
+#shape3{
+  .RoundedSquare(60px);
 }
